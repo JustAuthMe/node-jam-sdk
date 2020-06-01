@@ -6,7 +6,7 @@ npm i node-jam-sdk
 ```
 
 
-##Usage :
+## Usage :
 ### 1. Import
 ```javascript
 const { JamSDK } = require("node-jam-sdk");
@@ -30,7 +30,7 @@ jam.generateLoginUrl()
 If you're using React for your frontend, you can use the [react-jam-button](https://www.npmjs.com/package/react-jam-button) component.
 
 
-###4. Authenticate the user
+### 4. Authenticate the user
 When the users authenticate using the app, they will be redirected to your redirectUrl with an accessToken in the uri.
 
 `getUserInfos` will return the UserData through a Promise (e.g: jam_id, email, first_name, last_name, etc...)
