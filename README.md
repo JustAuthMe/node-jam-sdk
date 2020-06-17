@@ -33,7 +33,7 @@ If you're using React for your frontend, you can use the [react-jam-button](http
 ### 4. Authenticate the user
 When the users authenticate using the app, they will be redirected to your redirectUrl with an accessToken in the uri.
 
-`getUserInfos` will return the UserData through a Promise (e.g: jam_id, email, first_name, last_name, etc...)
+`getUserInfos` will return the UserData through a Promise (e.g: jam_id, email, firstname, lastname, etc...)
 
 ```javascript
 jam.getUserInfos(accessToken).then(value => {
@@ -56,8 +56,8 @@ app.get('/auth-jam', function(req, res){
     const accessToken =  req.query.access_token;
 
     jam.getUserInfos(accessToken).then(userData => {
-        // if userData.jam_id exists in database, login user (and maybe update user data)
-        // else : register user with userData fields (email, first_name etc...) and save jam_id
+        // if userData.jam_id exists in your database, you have to login that user.
+        // else : you have to save userData.jam_id into your database along with the data from userData (email etc)
     }).catch(error => {
         // handle error
     })
@@ -67,3 +67,13 @@ app.get('/auth-jam', function(req, res){
 app.listen(3000);
 
 ```
+
+### Error handling :
+The getUserInfos promise may reject. There are different types of error :
+|Error|Reason|
+|---|---|
+|JamBadRequestError | Access-Token and API Secret are required. Please contact support@justauth.me.|
+|JamUnauthorizedError | Api Secret is invalid|
+|JamNotFoundError | No such Access-Token|
+|JamInternalServerError | This should not happen. Please contact support@justauth.me if it does.|
+|JamUnknownError | This should not happen. Please contact support@justauth.me if it does|

@@ -13,6 +13,8 @@ const API_URL =  `${CORE_URL}api/`;
 
 interface TypicalUserData {
     email: string;
+    firstname: string;
+    lastname: string;
     jam_id: string;
     [key: string]: string;
 }
